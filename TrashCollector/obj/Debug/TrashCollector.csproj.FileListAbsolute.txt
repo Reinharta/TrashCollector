@@ -120,3 +120,8 @@ C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashC
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.csproj.CopyComplete
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.dll
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.pdb
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedCustomerandEmployeeUsers.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.csproj.GenerateResource.cache
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedDBSetforemployeeandcustomerusers.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedRoles.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.addedUserRoles.resources
