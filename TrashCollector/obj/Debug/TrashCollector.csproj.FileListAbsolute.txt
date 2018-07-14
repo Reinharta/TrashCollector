@@ -125,3 +125,4 @@ C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashC
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedDBSetforemployeeandcustomerusers.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedRoles.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.addedUserRoles.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.precontrolleradd.resources

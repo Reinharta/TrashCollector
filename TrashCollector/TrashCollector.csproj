@@ -196,8 +196,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerUsersController.cs" />
+    <Compile Include="Controllers\EmployeeUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PickUpsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,12 +220,17 @@
     <Compile Include="Migrations\201807130121444_added UserRoles.Designer.cs">
       <DependentUpon>201807130121444_added UserRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807141643377_pre-controller add.cs" />
+    <Compile Include="Migrations\201807141643377_pre-controller add.Designer.cs">
+      <DependentUpon>201807141643377_pre-controller add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerUsers.cs" />
     <Compile Include="Models\EmployeeUsers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PickUps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -285,6 +293,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\EmployeeUsers\Create.cshtml" />
+    <Content Include="Views\EmployeeUsers\Delete.cshtml" />
+    <Content Include="Views\EmployeeUsers\Details.cshtml" />
+    <Content Include="Views\EmployeeUsers\Edit.cshtml" />
+    <Content Include="Views\EmployeeUsers\Index.cshtml" />
+    <Content Include="Views\PickUps\Create.cshtml" />
+    <Content Include="Views\PickUps\Delete.cshtml" />
+    <Content Include="Views\PickUps\Details.cshtml" />
+    <Content Include="Views\PickUps\Edit.cshtml" />
+    <Content Include="Views\PickUps\Index.cshtml" />
+    <Content Include="Views\CustomerUsers\Create.cshtml" />
+    <Content Include="Views\CustomerUsers\Delete.cshtml" />
+    <Content Include="Views\CustomerUsers\Details.cshtml" />
+    <Content Include="Views\CustomerUsers\Edit.cshtml" />
+    <Content Include="Views\CustomerUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807130121444_added UserRoles.resx">
       <DependentUpon>201807130121444_added UserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807141643377_pre-controller add.resx">
+      <DependentUpon>201807141643377_pre-controller add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

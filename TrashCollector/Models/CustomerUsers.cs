@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace TrashCollector.Models
 {
@@ -12,10 +15,23 @@ namespace TrashCollector.Models
         [Key]
         public int CustomerId { get; set; }
 
-        //[ForeignKey ("AspNetUsers")]
-        public int UserId { get; set; }
+        //[ForeignKey("Id")]
+        public string UserId { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
 
         //[ForeignKey ("Addresses")]
         public int Address { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public int PhoneNumber { get; set; }
+
+
+
+
     }
 }
