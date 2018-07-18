@@ -126,3 +126,11 @@ C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashC
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedRoles.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.addedUserRoles.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.precontrolleradd.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedAddressesandStates.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedtoAccountViewModel.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedtoApplicationUser.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedStatesandAddresses.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddingStatesandAddressesforreal.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedCities.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.AddedCitiesforreal.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.addingcities.resources

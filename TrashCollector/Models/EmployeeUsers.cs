@@ -14,10 +14,22 @@ namespace TrashCollector.Models
         [Key]
         public int EmployeeId { get; set; }
 
-        //[ForeignKey("UserId")]
+        //[ForeignKey("Id")]
         public string UserId { get; set; }
 
-        //[ForeignKey("Addresses")]
+        //FK
+        public IdentityRole Role { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        //[ForeignKey ("Addresses")]
         public int Address { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public int PhoneNumber { get; set; }
     }
 }

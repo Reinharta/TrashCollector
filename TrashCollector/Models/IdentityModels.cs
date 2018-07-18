@@ -10,6 +10,18 @@ namespace TrashCollector.Models
     public class ApplicationUser : IdentityUser
     {
         public string UserRole { get; set; }
+        
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string StreetAddress { get; set; }
+
+        public string City { get; set; }
+
+        public string State { get; set; }
+
+        public int Zipcode { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -33,5 +45,8 @@ namespace TrashCollector.Models
         public DbSet<CustomerUsers> CustomerUsers { get; set; }
         public DbSet<EmployeeUsers> EmployeeUsers { get; set; }
         public DbSet<PickUps> PickUps { get; set; }
+        public DbSet<States> States { get; set; }
+        public DbSet<Addresses> Addresses { get; set; }
+        public DbSet<Cities> Cities { get; set; }
     }
 }

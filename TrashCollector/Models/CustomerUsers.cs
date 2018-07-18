@@ -18,6 +18,9 @@ namespace TrashCollector.Models
         //[ForeignKey("Id")]
         public string UserId { get; set; }
 
+        //fk
+        public IdentityRole Role { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 

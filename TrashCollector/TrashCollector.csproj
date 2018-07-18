@@ -224,13 +224,48 @@
     <Compile Include="Migrations\201807141643377_pre-controller add.Designer.cs">
       <DependentUpon>201807141643377_pre-controller add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807172326591_Added Addresses and States.cs" />
+    <Compile Include="Migrations\201807172326591_Added Addresses and States.Designer.cs">
+      <DependentUpon>201807172326591_Added Addresses and States.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180004231_Added to AccountViewModel.cs" />
+    <Compile Include="Migrations\201807180004231_Added to AccountViewModel.Designer.cs">
+      <DependentUpon>201807180004231_Added to AccountViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180008170_Added to ApplicationUser.cs" />
+    <Compile Include="Migrations\201807180008170_Added to ApplicationUser.Designer.cs">
+      <DependentUpon>201807180008170_Added to ApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180031470_Added States and Addresses.cs" />
+    <Compile Include="Migrations\201807180031470_Added States and Addresses.Designer.cs">
+      <DependentUpon>201807180031470_Added States and Addresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180036301_Adding States and Addresses for real.cs" />
+    <Compile Include="Migrations\201807180036301_Adding States and Addresses for real.Designer.cs">
+      <DependentUpon>201807180036301_Adding States and Addresses for real.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180046353_Added Cities.cs" />
+    <Compile Include="Migrations\201807180046353_Added Cities.Designer.cs">
+      <DependentUpon>201807180046353_Added Cities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180049065_Added Cities for real.cs" />
+    <Compile Include="Migrations\201807180049065_Added Cities for real.Designer.cs">
+      <DependentUpon>201807180049065_Added Cities for real.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180114508_adding cities.cs" />
+    <Compile Include="Migrations\201807180114508_adding cities.Designer.cs">
+      <DependentUpon>201807180114508_adding cities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Addresses.cs" />
+    <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\CustomerUsers.cs" />
     <Compile Include="Models\EmployeeUsers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PickUps.cs" />
+    <Compile Include="Models\States.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -340,6 +375,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807141643377_pre-controller add.resx">
       <DependentUpon>201807141643377_pre-controller add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807172326591_Added Addresses and States.resx">
+      <DependentUpon>201807172326591_Added Addresses and States.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180004231_Added to AccountViewModel.resx">
+      <DependentUpon>201807180004231_Added to AccountViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180008170_Added to ApplicationUser.resx">
+      <DependentUpon>201807180008170_Added to ApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180031470_Added States and Addresses.resx">
+      <DependentUpon>201807180031470_Added States and Addresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180036301_Adding States and Addresses for real.resx">
+      <DependentUpon>201807180036301_Adding States and Addresses for real.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180046353_Added Cities.resx">
+      <DependentUpon>201807180046353_Added Cities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180049065_Added Cities for real.resx">
+      <DependentUpon>201807180049065_Added Cities for real.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180114508_adding cities.resx">
+      <DependentUpon>201807180114508_adding cities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

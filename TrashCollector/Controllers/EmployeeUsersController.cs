@@ -38,7 +38,8 @@ namespace TrashCollector.Controllers
         // GET: EmployeeUsers/Create
         public ActionResult Create()
         {
-            return View();
+            EmployeeUsers employee = new EmployeeUsers();
+            return View(employee);
         }
 
         // POST: EmployeeUsers/Create
@@ -46,16 +47,22 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeId,UserId,Address")] EmployeeUsers employeeUsers)
+        public ActionResult Create([Bind(Include = "EmployeeId,UserId,Address")] ApplicationUser newUser)
         {
             if (ModelState.IsValid)
             {
-                db.EmployeeUsers.Add(employeeUsers);
+                EmployeeUsers newEmployee = new EmployeeUsers()
+                {
+                    Role = db.Roles.Where(c => c.Id == newUser.UserRole).First(),
+                    //FirstName = newUser.
+                };
+                db.EmployeeUsers.Add(newEmployee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
 
-            return View(employeeUsers);
+            return View(newUser);
         }
 
         // GET: EmployeeUsers/Edit/5
