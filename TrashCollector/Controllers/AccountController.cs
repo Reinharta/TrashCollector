@@ -149,6 +149,7 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {
@@ -174,13 +175,21 @@ namespace TrashCollector.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
+                    Addresses address = new Addresses()
+                    {
+                        StreetAddress = model.StreetAddress,
+                        City = model.City,
+                        State = db.States.Where(c => c.StateName == model.State || c.StateAbbreviation == model.State).First().Id,
+                        Zipcode = model.Zipcode
+                    };
+                    RedirectToAction("Create", "Addresses", address);
                     if(user.UserRole == "Employee")
                     {
-                        return RedirectToAction("Create", "Employee", user);
+                        return RedirectToAction("Create", "EmployeeUsers", user);
                     }
                     if(user.UserRole == "Customer")
                     {
-                        return RedirectToAction("Create", "Customer", user);
+                        return RedirectToAction("Create", "CustomerUsers", user);
                     }
                 }
                 AddErrors(result);

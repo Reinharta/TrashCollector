@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TrashCollector.Models
 {
-    public class EmployeeUsers
+    public class EmployeeUsers 
     {
         [Key]
         public int EmployeeId { get; set; }

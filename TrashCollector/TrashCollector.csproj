@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\CustomerUsersController.cs" />
     <Compile Include="Controllers\EmployeeUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -255,6 +256,10 @@
     <Compile Include="Migrations\201807180114508_adding cities.cs" />
     <Compile Include="Migrations\201807180114508_adding cities.Designer.cs">
       <DependentUpon>201807180114508_adding cities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807190135507_no idea.cs" />
+    <Compile Include="Migrations\201807190135507_no idea.Designer.cs">
+      <DependentUpon>201807190135507_no idea.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -343,6 +348,11 @@
     <Content Include="Views\CustomerUsers\Details.cshtml" />
     <Content Include="Views\CustomerUsers\Edit.cshtml" />
     <Content Include="Views\CustomerUsers\Index.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -399,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807180114508_adding cities.resx">
       <DependentUpon>201807180114508_adding cities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807190135507_no idea.resx">
+      <DependentUpon>201807190135507_no idea.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -42,11 +42,12 @@ namespace TrashCollector.Models
         {
             return new ApplicationDbContext();
         }
-        public DbSet<CustomerUsers> CustomerUsers { get; set; }
+        
         public DbSet<EmployeeUsers> EmployeeUsers { get; set; }
         public DbSet<PickUps> PickUps { get; set; }
         public DbSet<States> States { get; set; }
         public DbSet<Addresses> Addresses { get; set; }
+        public DbSet<CustomerUsers> CustomerUsers { get; set; }
         public DbSet<Cities> Cities { get; set; }
     }
 }
