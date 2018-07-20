@@ -1,6 +1,8 @@
 ﻿@model TrashCollector.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+                /**/
+
+                ViewBag.Title = "Register";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -58,6 +60,12 @@
         @Html.LabelFor(m => m.Zipcode, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class=" form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">

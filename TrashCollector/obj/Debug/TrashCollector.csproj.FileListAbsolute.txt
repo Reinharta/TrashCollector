@@ -139,3 +139,4 @@ C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashC
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.update.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.removedrolecolumns.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.yeah.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.regpathway.resources

@@ -37,10 +37,10 @@ namespace TrashCollector.Controllers
         }
 
         // GET: CustomerUsers/Create
-        public ActionResult Create()
+        public ActionResult Create(CustomerUsers model)
         {
-
-            return View();
+            model = db.CustomerUsers.Include(c => c.Addresses).First();
+            return View(model);
         }
 
         // POST: CustomerUsers/Create
@@ -63,10 +63,10 @@ namespace TrashCollector.Controllers
                 };
                 db.CustomerUsers.Add(newCustomerUser);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", newCustomerUser);
             }
 
-            return View();
+            return View("Details");
         }
 
         // GET: CustomerUsers/Edit/5
@@ -89,7 +89,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,UserId,FirstName,LastName,Address,PhoneNumber")] CustomerUsers customerUsers)
+        public ActionResult Edit([Bind(Include = "CustomerId,Id,FirstName,LastName,Address,PhoneNumber")] CustomerUsers customerUsers)
         {
             if (ModelState.IsValid)
             {

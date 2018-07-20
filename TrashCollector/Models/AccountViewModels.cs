@@ -66,7 +66,6 @@ namespace TrashCollector.Models
     public class RegisterViewModel
     {
         [Required]
-        //[ForeignKey(]
         [Display(Name = "Account Type:")]
         public string UserRole { get; set; }
 
@@ -91,6 +90,9 @@ namespace TrashCollector.Models
 
         [Required]
         public int Zipcode { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [EmailAddress]

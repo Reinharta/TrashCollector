@@ -162,6 +162,7 @@ namespace TrashCollector.Controllers
                     State = model.State,
                     Zipcode = model.Zipcode,
                     UserRole = model.UserRole,
+                    PhoneNumber = model.PhoneNumber,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -185,7 +186,7 @@ namespace TrashCollector.Controllers
                     RedirectToAction("Create", "Addresses", address);
                     if(user.UserRole == "Employee")
                     {
-                        return RedirectToAction("Create", "EmployeeUsers", user);
+                        return RedirectToAction("Create", "EmployeeUsers", model);
                     }
                     if(user.UserRole == "Customer")
                     {
