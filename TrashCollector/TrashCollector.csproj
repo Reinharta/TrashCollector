@@ -261,6 +261,22 @@
     <Compile Include="Migrations\201807190135507_no idea.Designer.cs">
       <DependentUpon>201807190135507_no idea.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807190351326_added and fix FKs.cs" />
+    <Compile Include="Migrations\201807190351326_added and fix FKs.Designer.cs">
+      <DependentUpon>201807190351326_added and fix FKs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807192259461_update.cs" />
+    <Compile Include="Migrations\201807192259461_update.Designer.cs">
+      <DependentUpon>201807192259461_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807192303560_removed role columns.cs" />
+    <Compile Include="Migrations\201807192303560_removed role columns.Designer.cs">
+      <DependentUpon>201807192303560_removed role columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807200013399_yeah.cs" />
+    <Compile Include="Migrations\201807200013399_yeah.Designer.cs">
+      <DependentUpon>201807200013399_yeah.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Addresses.cs" />
@@ -412,6 +428,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807190135507_no idea.resx">
       <DependentUpon>201807190135507_no idea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807190351326_added and fix FKs.resx">
+      <DependentUpon>201807190351326_added and fix FKs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807192259461_update.resx">
+      <DependentUpon>201807192259461_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807192303560_removed role columns.resx">
+      <DependentUpon>201807192303560_removed role columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807200013399_yeah.resx">
+      <DependentUpon>201807200013399_yeah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

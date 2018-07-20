@@ -22,6 +22,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <li>@Html.ActionLink("All Pickups", "Details", "PickUps")</li>
+                    }
+
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li>@Html.ActionLink("Add A Pickup","Create", "PickUps")</li>
+                        <li>@Html.ActionLink("View Pickups", "Details", "PickUps")</li>
+                        <li>@Html.ActionLink("View Bill", "Details", "Bill")</li>
+                    }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

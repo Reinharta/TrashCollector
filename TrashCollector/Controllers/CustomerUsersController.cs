@@ -48,18 +48,18 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind] ApplicationUser newUser)
-        {
+        public ActionResult Create([Bind(Exclude = "UserRole")] ApplicationUser newUser)
+        {//may need to exclude aspNet id from Bind
             if (ModelState.IsValid)
             {
                 CustomerUsers newCustomerUser = new CustomerUsers()
                 {
-                    UserId = User.Identity.GetUserId(),
+                    Id = User.Identity.GetUserId(),
                     FirstName = newUser.FirstName,
                     LastName = newUser.LastName,
                     PhoneNumber = newUser.PhoneNumber,
-                    //Role = db.Roles.Where(c => c.Name == newUser.UserRole).First().Id,
                     AddressId = db.Addresses.Where(c => c.StreetAddress == newUser.StreetAddress && c.Zipcode == newUser.Zipcode).First().Id,
+
                 };
                 db.CustomerUsers.Add(newCustomerUser);
                 db.SaveChanges();

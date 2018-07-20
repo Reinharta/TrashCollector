@@ -20,5 +20,7 @@ namespace TrashCollector.Models
         public int State { get; set; }
 
         public int Zipcode { get; set; }
+
+        
     }
 }

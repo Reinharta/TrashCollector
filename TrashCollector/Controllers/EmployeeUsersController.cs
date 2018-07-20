@@ -53,7 +53,7 @@ namespace TrashCollector.Controllers
             {
                 EmployeeUsers newEmployee = new EmployeeUsers()
                 {
-                    Role = db.Roles.Where(c => c.Id == newUser.UserRole).First(),
+                   
                     //FirstName = newUser.
                 };
                 db.EmployeeUsers.Add(newEmployee);

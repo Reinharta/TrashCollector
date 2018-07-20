@@ -14,11 +14,7 @@ namespace TrashCollector.Models
         [Key]
         public int EmployeeId { get; set; }
 
-        //[ForeignKey("Id")]
-        public string UserId { get; set; }
-
-        //FK
-        public IdentityRole Role { get; set; }
+        public string Id { get; set; }
 
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -26,10 +22,13 @@ namespace TrashCollector.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        //[ForeignKey ("Addresses")]
+        [ForeignKey ("Addresses")]
         public int Address { get; set; }
+        public Addresses Addresses { get; set; }
 
         [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public IEnumerable<Addresses> AddressEmployee { get; set; }
     }
 }
