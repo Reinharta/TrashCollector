@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -44,12 +45,12 @@ namespace TrashCollector.Models
         {
             return new ApplicationDbContext();
         }
-        
+
+
+        public IEnumerable ApplicationUsers { get; internal set; }
+        public DbSet<States> States { get; set; }
+        public DbSet<CustomerUsers> CustomerUsers { get; set; }
         public DbSet<EmployeeUsers> EmployeeUsers { get; set; }
         public DbSet<PickUps> PickUps { get; set; }
-        public DbSet<States> States { get; set; }
-        public DbSet<Addresses> Addresses { get; set; }
-        public DbSet<CustomerUsers> CustomerUsers { get; set; }
-        public DbSet<Cities> Cities { get; set; }
     }
 }

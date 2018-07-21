@@ -15,7 +15,10 @@ namespace TrashCollector.Models
         [Key]
         public int CustomerId { get; set; }
 
-        public string Id { get; set; }
+
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -23,15 +26,8 @@ namespace TrashCollector.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [ForeignKey("Addresses")]
-        public int AddressId { get; set; }
-        public Addresses Addresses { get; set; }
-
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-
-
-        public IEnumerable<Addresses> AddressCustomer { get; set; }
 
     }
 }

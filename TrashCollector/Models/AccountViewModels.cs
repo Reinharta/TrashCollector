@@ -82,7 +82,6 @@ namespace TrashCollector.Models
         public string StreetAddress { get; set; }
 
         [Required]
-        [Display(Name = "City")]
         public string City { get; set; }
 
         [Required]

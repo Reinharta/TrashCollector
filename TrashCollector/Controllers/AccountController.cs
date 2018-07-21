@@ -176,17 +176,10 @@ namespace TrashCollector.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
-                    Addresses address = new Addresses()
+
+                    if (user.UserRole == "Employee")
                     {
-                        StreetAddress = model.StreetAddress,
-                        City = model.City,
-                        State = db.States.Where(c => c.StateName == model.State || c.StateAbbreviation == model.State).First().Id,
-                        Zipcode = model.Zipcode
-                    };
-                    RedirectToAction("Create", "Addresses", address);
-                    if(user.UserRole == "Employee")
-                    {
-                        return RedirectToAction("Create", "EmployeeUsers", model);
+                        return RedirectToAction("Create", "EmployeeUsers", user);
                     }
                     if(user.UserRole == "Customer")
                     {

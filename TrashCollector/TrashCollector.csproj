@@ -196,7 +196,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\CustomerUsersController.cs" />
     <Compile Include="Controllers\EmployeeUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -261,10 +260,6 @@
     <Compile Include="Migrations\201807190135507_no idea.Designer.cs">
       <DependentUpon>201807190135507_no idea.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807190351326_added and fix FKs.cs" />
-    <Compile Include="Migrations\201807190351326_added and fix FKs.Designer.cs">
-      <DependentUpon>201807190351326_added and fix FKs.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807192259461_update.cs" />
     <Compile Include="Migrations\201807192259461_update.Designer.cs">
       <DependentUpon>201807192259461_update.cs</DependentUpon>
@@ -281,10 +276,24 @@
     <Compile Include="Migrations\201807200048132_reg pathway.Designer.cs">
       <DependentUpon>201807200048132_reg pathway.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807211553187_spring cleaning.cs" />
+    <Compile Include="Migrations\201807211553187_spring cleaning.Designer.cs">
+      <DependentUpon>201807211553187_spring cleaning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807211605104_spring cleaning v.2.cs" />
+    <Compile Include="Migrations\201807211605104_spring cleaning v.2.Designer.cs">
+      <DependentUpon>201807211605104_spring cleaning v.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807211613376_test.cs" />
+    <Compile Include="Migrations\201807211613376_test.Designer.cs">
+      <DependentUpon>201807211613376_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807211645523_Update Empl.cs" />
+    <Compile Include="Migrations\201807211645523_Update Empl.Designer.cs">
+      <DependentUpon>201807211645523_Update Empl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Addresses.cs" />
-    <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\CustomerUsers.cs" />
     <Compile Include="Models\EmployeeUsers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -364,15 +373,10 @@
     <Content Include="Views\PickUps\Edit.cshtml" />
     <Content Include="Views\PickUps\Index.cshtml" />
     <Content Include="Views\CustomerUsers\Create.cshtml" />
-    <Content Include="Views\CustomerUsers\Delete.cshtml" />
     <Content Include="Views\CustomerUsers\Details.cshtml" />
+    <Content Include="Views\CustomerUsers\Delete.cshtml" />
     <Content Include="Views\CustomerUsers\Edit.cshtml" />
     <Content Include="Views\CustomerUsers\Index.cshtml" />
-    <Content Include="Views\Addresses\Create.cshtml" />
-    <Content Include="Views\Addresses\Delete.cshtml" />
-    <Content Include="Views\Addresses\Details.cshtml" />
-    <Content Include="Views\Addresses\Edit.cshtml" />
-    <Content Include="Views\Addresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -433,9 +437,6 @@
     <EmbeddedResource Include="Migrations\201807190135507_no idea.resx">
       <DependentUpon>201807190135507_no idea.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807190351326_added and fix FKs.resx">
-      <DependentUpon>201807190351326_added and fix FKs.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807192259461_update.resx">
       <DependentUpon>201807192259461_update.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,6 +448,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807200048132_reg pathway.resx">
       <DependentUpon>201807200048132_reg pathway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807211553187_spring cleaning.resx">
+      <DependentUpon>201807211553187_spring cleaning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807211605104_spring cleaning v.2.resx">
+      <DependentUpon>201807211605104_spring cleaning v.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807211613376_test.resx">
+      <DependentUpon>201807211613376_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807211645523_Update Empl.resx">
+      <DependentUpon>201807211645523_Update Empl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

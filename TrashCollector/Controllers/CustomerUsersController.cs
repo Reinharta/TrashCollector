@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
@@ -14,125 +11,96 @@ namespace TrashCollector.Controllers
     public class CustomerUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: CustomerUsers
         public ActionResult Index()
         {
-            return View(db.CustomerUsers.ToList());
+            return View();
         }
 
         // GET: CustomerUsers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CustomerUsers customerUsers = db.CustomerUsers.Find(id);
-            if (customerUsers == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customerUsers);
+            return View();
         }
 
-        // GET: CustomerUsers/Create
-        public ActionResult Create(CustomerUsers model)
+        //GET: CustomerUsers/Create
+        public ViewResult Create(ApplicationUser newUser)
         {
-            model = db.CustomerUsers.Include(c => c.Addresses).First();
-            return View(model);
+
+            return View(newUser);
         }
 
-        // POST: CustomerUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Exclude = "UserRole")] ApplicationUser newUser)
-        {//may need to exclude aspNet id from Bind
+        //POST: CustomerUsers/Create
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+       [ActionName("Create")]
+        public ActionResult CreatePost([Bind (Include = "FirstName,LastName,PhoneNumber,UserId")] ApplicationUser newUser)
+        {
             if (ModelState.IsValid)
             {
-                CustomerUsers newCustomerUser = new CustomerUsers()
+                try
                 {
-                    Id = User.Identity.GetUserId(),
-                    FirstName = newUser.FirstName,
-                    LastName = newUser.LastName,
-                    PhoneNumber = newUser.PhoneNumber,
-                    AddressId = db.Addresses.Where(c => c.StreetAddress == newUser.StreetAddress && c.Zipcode == newUser.Zipcode).First().Id,
-
-                };
-                db.CustomerUsers.Add(newCustomerUser);
-                db.SaveChanges();
-                return RedirectToAction("Details", newCustomerUser);
+                    CustomerUsers newCustomer = new CustomerUsers()
+                    {
+                        UserId = User.Identity.GetUserId(),
+                        FirstName = newUser.FirstName,
+                        LastName = newUser.LastName,
+                        PhoneNumber = newUser.PhoneNumber
+                    };
+                    db.CustomerUsers.Add(newCustomer);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", newCustomer);
+                }
+                catch
+                {
+                    return View();
+                }
             }
-
-            return View("Details");
+            return View();
         }
 
         // GET: CustomerUsers/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CustomerUsers customerUsers = db.CustomerUsers.Find(id);
-            if (customerUsers == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customerUsers);
+            return View();
         }
 
         // POST: CustomerUsers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,Id,FirstName,LastName,Address,PhoneNumber")] CustomerUsers customerUsers)
+        public ActionResult Edit(int id, FormCollection collection)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(customerUsers).State = EntityState.Modified;
-                db.SaveChanges();
+                // TODO: Add update logic here
+
                 return RedirectToAction("Index");
             }
-            return View(customerUsers);
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: CustomerUsers/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CustomerUsers customerUsers = db.CustomerUsers.Find(id);
-            if (customerUsers == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customerUsers);
+            return View();
         }
 
         // POST: CustomerUsers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            CustomerUsers customerUsers = db.CustomerUsers.Find(id);
-            db.CustomerUsers.Remove(customerUsers);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            try
             {
-                db.Dispose();
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
             }
-            base.Dispose(disposing);
+            catch
+            {
+                return View();
+            }
         }
     }
 }
