@@ -1,4 +1,6 @@
-﻿@model IEnumerable<TrashCollector.Models.PickUps>
+﻿@using TrashCollector.Models;
+
+@model IEnumerable<TrashCollector.Models.PickUps>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +14,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PickUpDay)
@@ -29,29 +31,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickUpDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recurring)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PickUpId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PickUpId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PickUpId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recurring)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PickUpId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PickUpId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PickUpId })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -36,9 +37,9 @@ namespace TrashCollector.Controllers
         }
 
         // GET: PickUps/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            return View(id);
         }
 
         // POST: PickUps/Create
@@ -46,16 +47,34 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PickUpId,Address,PickUpDay,StartDate,EndDate,Recurring")] PickUps pickUps)
+        public ActionResult Create([Bind(Include = "PickUpId,PickUpDay,StartDate,EndDate,Recurring")] PickUps pickUps)
         {
+            string currentUserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                CustomerUsers currentCustomer = db.CustomerUsers.Where(c => c.UserId == currentUserId).First();
+                DateTime getPickUpDate = GetNextWeekday(DateTime.Today, pickUps.PickUpDay);
+
+                pickUps.CustomerId = currentCustomer.CustomerId;
+                pickUps.StreetAddress = currentCustomer.User.StreetAddress;
+                pickUps.Zipcode = currentCustomer.User.Zipcode;
+                pickUps.PickUpDate = getPickUpDate;
+                pickUps.Completed = false;
+ 
+
                 db.PickUps.Add(pickUps);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "PickUps", db.PickUps.ToList());
             }
 
-            return View(pickUps);
+            return View("Index", "CustomerUsers", currentUserId);
+        }
+
+        public static DateTime GetNextWeekday(DateTime start, DayOfWeek day)
+        {
+            // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
+            int daysToAdd = ((int)day - (int)start.DayOfWeek + 7) % 7;
+            return start.AddDays(daysToAdd);
         }
 
         // GET: PickUps/Edit/5
@@ -78,13 +97,23 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PickUpId,Address,PickUpDay,StartDate,EndDate,Recurring")] PickUps pickUps)
+        public ActionResult Edit([Bind(Include = "PickUpId,PickUpDay,StartDate,EndDate,Recurring")] PickUps pickUps)
         {
+            string currentUserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                CustomerUsers currentCustomer = db.CustomerUsers.Where(c => c.UserId == currentUserId).First();
+                DateTime getPickUpDate = GetNextWeekday(DateTime.Today, pickUps.PickUpDay);
+
+                pickUps.CustomerId = currentCustomer.CustomerId;
+                pickUps.StreetAddress = currentCustomer.User.StreetAddress;
+                pickUps.Zipcode = currentCustomer.User.Zipcode;
+                pickUps.PickUpDate = getPickUpDate;
+                pickUps.Completed = false;
+
                 db.Entry(pickUps).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "PickUps", db.PickUps.ToList());
             }
             return View(pickUps);
         }

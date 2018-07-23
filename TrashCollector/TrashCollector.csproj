@@ -308,6 +308,10 @@
     <Compile Include="Migrations\201807230037245_Added PU Date.Designer.cs">
       <DependentUpon>201807230037245_Added PU Date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807230203363_exception in startup.cs" />
+    <Compile Include="Migrations\201807230203363_exception in startup.Designer.cs">
+      <DependentUpon>201807230203363_exception in startup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerUsers.cs" />
@@ -320,6 +324,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerUsersCreateViewModel.cs" />
     <Compile Include="ViewModels\CustomerUsersIndexViewModel.cs" />
+    <Compile Include="ViewModels\PickUpsIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -490,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807230037245_Added PU Date.resx">
       <DependentUpon>201807230037245_Added PU Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807230203363_exception in startup.resx">
+      <DependentUpon>201807230203363_exception in startup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

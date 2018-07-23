@@ -17,14 +17,11 @@ namespace TrashCollector.Models
         public int CustomerId { get; set; }
         public CustomerUsers Customers { get; set; }
 
-        [Required]
         [Display(Name ="Street Address")]
         public string StreetAddress { get; set; }
 
-        [Required]
         public int Zipcode { get; set; }
 
-        [Required]
         [Display(Name = "Pick Up Day")]
         public DayOfWeek PickUpDay { get; set; }
 
