@@ -155,3 +155,4 @@ C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashC
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.addingbillingmodelv2.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.tryingtoaddbillingv1.resources
 C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.tryingtoaddbillingmodelv2.resources
+C:\Users\Anina\Desktop\VSProjects\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.tryingtoaddbillingmodelv3.resources

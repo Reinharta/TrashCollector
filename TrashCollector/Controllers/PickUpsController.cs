@@ -109,15 +109,19 @@ namespace TrashCollector.Controllers
                 CustomerUsers currentCustomer = db.CustomerUsers.Where(c => c.UserId == currentUserId).First();
                 DateTime getPickUpDate = GetNextWeekday(DateTime.Today, pickUps.PickUpDay);
 
-                pickUps.CustomerId = currentCustomer.CustomerId;
-                pickUps.StreetAddress = currentCustomer.User.StreetAddress;
-                pickUps.Zipcode = currentCustomer.User.Zipcode;
                 pickUps.PickUpDate = getPickUpDate;
-                pickUps.Completed = false;
 
                 db.Entry(pickUps).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PickUps", db.PickUps.ToList());
+
+                if(pickUps.Completed == true)
+                {
+                    return RedirectToAction("Create", "Billings", pickUps);
+                }
+                else if(pickUps.Completed == false)
+                {
+                    return RedirectToAction("Index", "PickUps", db.PickUps.ToList());
+                }
             }
             return View(pickUps);
         }

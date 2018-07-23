@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
+using TrashCollector.ViewModels;
 
 namespace TrashCollector.Controllers
 {
@@ -17,8 +19,17 @@ namespace TrashCollector.Controllers
         // GET: Billings
         public ActionResult Index()
         {
-            var billing = db.Billing.Include(b => b.Customers).Include(b => b.PickUps);
-            return View(billing.ToList());
+            var currentUserId = User.Identity.GetUserId();
+            CustomerUsers customer = db.CustomerUsers.Where(c => c.UserId == currentUserId).First();
+
+            var ViewModel = new BillingIndexViewModel()
+            {
+                Customer = customer,
+                CustomerBills = db.Billing.Where(c => c.CustomerId == customer.CustomerId && c.Paid == false).AsEnumerable()
+            };
+
+            //var billing = db.Billing.Include(b => b.Customers).Include(b => b.PickUps);
+            return View(ViewModel);
         }
 
         // GET: Billings/Details/5
@@ -37,10 +48,11 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Billings/Create
-        public ActionResult Create()
+        public ActionResult Create(PickUps pickUp)
         {
-            ViewBag.CustomerId = new SelectList(db.CustomerUsers, "CustomerId", "UserId");
-            ViewBag.PickUpId = new SelectList(db.PickUps, "PickUpId", "StreetAddress");
+            ViewBag.CustomerId = pickUp.CustomerId;   //new SelectList(db.CustomerUsers, "CustomerId", "UserId");
+            ViewBag.PickUpId = pickUp.PickUpId;   //new SelectList(db.PickUps, "PickUpId", "StreetAddress");
+            ViewBag.Fee = 35.00;
             return View();
         }
 
