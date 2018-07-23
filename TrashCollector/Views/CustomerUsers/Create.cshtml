@@ -1,38 +1,93 @@
-﻿@model TrashCollector.Models.CustomerUsers
+﻿@using TrashCollector.Models;
+
+@model TrashCollector.ViewModels.CustomerUsersCreateViewModel
     
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Account Registration</h2>
 
 <div>
-    <h4>New Account</h4>
-    <h3>Please Review Then Submit</h3>
+    <h4>Please Review Before Submitting</h4>
+
     <hr />
 
+    @*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.Where(c => c.Id == model.UserId).First().StreetAddress)
+            </th>
+            <th></th>
+        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(@)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.User.StreetAddress)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+                    @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId })
+                </td>
+            </tr>
+    </table>*@
 
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.Customer.FirstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User.StreetAddress)
+            @Html.DisplayNameFor(model => model.Customer.LastName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.StreetAddress)
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUser.StreetAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUser.StreetAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUser.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUser.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUser.Zipcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppUser.Zipcode)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+<div class="col-md-offset-2 col-md-10">
+    <div class="btn btn-primary btn-large">
+        @Html.ActionLink("SUBMIT", "Index")
+    </div>
+        @Html.ActionLink("Edit", "Edit", "CustomerUsers", Model.Customer.CustomerId, new { @class = "btn btn-link" })
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = model.CustomerId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

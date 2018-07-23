@@ -12,16 +12,24 @@ namespace TrashCollector.Models
         [Key]
         public int PickUpId { get; set; }
 
-        //[ForeignKey("CustomerId")]
+        [ForeignKey("Customers")]
         [Display(Name = "Customer")]
-        public CustomerUsers CustomerId { get; set; }
+        public int CustomerId { get; set; }
+        public CustomerUsers Customers { get; set; }
 
         [Required]
-        public int Address { get; set; }
+        [Display(Name ="Street Address")]
+        public string StreetAddress { get; set; }
+
+        [Required]
+        public int Zipcode { get; set; }
 
         [Required]
         [Display(Name = "Pick Up Day")]
         public DayOfWeek PickUpDay { get; set; }
+
+        [Display(Name = "Pick Up Date")]
+        public DateTime PickUpDate { get; set; }
 
         [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
@@ -30,5 +38,7 @@ namespace TrashCollector.Models
         public DateTime EndDate { get; set; }
 
         public bool Recurring { get; set; }
+        
+        public bool Completed { get; set; }
     }
 }

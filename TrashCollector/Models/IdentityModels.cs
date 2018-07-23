@@ -47,7 +47,7 @@ namespace TrashCollector.Models
         }
 
 
-        public IEnumerable ApplicationUsers { get; internal set; }
+        //public IEnumerable ApplicationUsers { get; internal set; }
         public DbSet<States> States { get; set; }
         public DbSet<CustomerUsers> CustomerUsers { get; set; }
         public DbSet<EmployeeUsers> EmployeeUsers { get; set; }

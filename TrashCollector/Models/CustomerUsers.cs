@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
 
 
 namespace TrashCollector.Models
@@ -28,6 +30,8 @@ namespace TrashCollector.Models
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+        
+        public IEnumerable<ApplicationUser> Users;
 
     }
 }

@@ -1,42 +1,50 @@
-﻿@model IEnumerable<TrashCollector.Models.CustomerUsers>
+﻿@model TrashCollector.ViewModels.CustomerUsersIndexViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Customer Home</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add A Pick-Up", "Create", "PickUps", Model.Customer.CustomerId, null)
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Pick-Up Day
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            Start Date
         </th>
-        <th></th>
+        <th>
+            End date
+        </th>
+        <th>
+            Recurring
+        </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var pickup in Model)
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @pickup.PickUpDay
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.StreetAddress)
+            @pickup.StartDate
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.City)
+            @pickup.EndDate
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId })
+            @pickup.Recurring
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "PickUps", new { id = pickup.PickUpId }, null) |
+            @Html.ActionLink("Details", "Details", new { id = pickup.PickUpId }, null) |
+            @Html.ActionLink("Delete", "Delete", new { id = pickup.PickUpId }, null)
         </td>
     </tr>
     }
