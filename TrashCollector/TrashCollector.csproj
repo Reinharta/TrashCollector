@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BillingsController.cs" />
     <Compile Include="Controllers\CustomerUsersController.cs" />
     <Compile Include="Controllers\EmployeeUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -324,8 +325,25 @@
     <Compile Include="Migrations\201807230329087_fixed emp, added VM.Designer.cs">
       <DependentUpon>201807230329087_fixed emp, added VM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807232003353_adding Billing model.cs" />
+    <Compile Include="Migrations\201807232003353_adding Billing model.Designer.cs">
+      <DependentUpon>201807232003353_adding Billing model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807232031037_adding billing model v.2.cs" />
+    <Compile Include="Migrations\201807232031037_adding billing model v.2.Designer.cs">
+      <DependentUpon>201807232031037_adding billing model v.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807232043144_trying to add billing v.1.cs" />
+    <Compile Include="Migrations\201807232043144_trying to add billing v.1.Designer.cs">
+      <DependentUpon>201807232043144_trying to add billing v.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807232051182_trying to add billing model v.2.cs" />
+    <Compile Include="Migrations\201807232051182_trying to add billing model v.2.Designer.cs">
+      <DependentUpon>201807232051182_trying to add billing model v.2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Billing.cs" />
     <Compile Include="Models\CustomerUsers.cs" />
     <Compile Include="Models\EmployeeUsers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -413,6 +431,11 @@
     <Content Include="Views\CustomerUsers\Delete.cshtml" />
     <Content Include="Views\CustomerUsers\Edit.cshtml" />
     <Content Include="Views\CustomerUsers\Index.cshtml" />
+    <Content Include="Views\Billings\Create.cshtml" />
+    <Content Include="Views\Billings\Delete.cshtml" />
+    <Content Include="Views\Billings\Details.cshtml" />
+    <Content Include="Views\Billings\Edit.cshtml" />
+    <Content Include="Views\Billings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -520,6 +543,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807230329087_fixed emp, added VM.resx">
       <DependentUpon>201807230329087_fixed emp, added VM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807232003353_adding Billing model.resx">
+      <DependentUpon>201807232003353_adding Billing model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807232031037_adding billing model v.2.resx">
+      <DependentUpon>201807232031037_adding billing model v.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807232043144_trying to add billing v.1.resx">
+      <DependentUpon>201807232043144_trying to add billing v.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807232051182_trying to add billing model v.2.resx">
+      <DependentUpon>201807232051182_trying to add billing model v.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
