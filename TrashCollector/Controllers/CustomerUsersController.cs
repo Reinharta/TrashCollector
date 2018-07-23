@@ -28,7 +28,8 @@ namespace TrashCollector.Controllers
         // GET: CustomerUsers/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            CustomerUsers customer = db.CustomerUsers.Where(c => c.CustomerId == id).First();
+            return View(customer);
         }
 
         //GET: CustomerUsers/Create
@@ -53,17 +54,19 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 CustomerUsers newCustomer = new CustomerUsers()
                 {
                     UserId = User.Identity.GetUserId(),
                     FirstName = newUser.FirstName,
                     LastName = newUser.LastName,
                     PhoneNumber = newUser.PhoneNumber,
-                    };
-                    db.CustomerUsers.Add(newCustomer);
-                    db.SaveChanges();
+                };
+
+                db.CustomerUsers.Add(newCustomer);
+                db.SaveChanges();
+
                 ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == newCustomer.UserId);
+
                 var ViewModel = new CustomerUsersCreateViewModel
                 {
                     Customer = newCustomer,
@@ -72,7 +75,7 @@ namespace TrashCollector.Controllers
                 return View("Create", ViewModel);
             }
 
-            return View("Index", "Home", newUser);
+            return RedirectToAction("Index", "Home", newUser);
         }
 
         // GET: CustomerUsers/Edit/5

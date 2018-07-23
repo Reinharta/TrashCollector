@@ -1,4 +1,6 @@
-﻿@model TrashCollector.Models.EmployeeUsers
+﻿@using TrashCollector.Models;
+
+@model TrashCollector.ViewModels.EmployeeUsersCreateViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -43,54 +45,54 @@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>*@
-
+<div>
 <dl class="dl-horizontal">
     <dt>
-        @Html.DisplayNameFor(model => model.FirstName)
+        @Html.DisplayNameFor(model => model.Employee.FirstName)
     </dt>
 
     <dd>
-        @Html.DisplayFor(model => model.FirstName)
+        @Html.DisplayFor(model => model.Employee.FirstName)
     </dd>
 
     <dt>
-        @Html.DisplayNameFor(model => model.LastName)
+        @Html.DisplayNameFor(model => model.Employee.LastName)
     </dt>
 
     <dd>
-        @Html.DisplayFor(model => model.LastName)
+        @Html.DisplayFor(model => model.Employee.LastName)
     </dd>
 
     <dt>
-        @Html.DisplayNameFor(model => model.User.StreetAddress)
+        @Html.DisplayNameFor(model => model.AppUser.StreetAddress)
     </dt>
 
     <dd>
-        @Html.DisplayFor(model => model.User.StreetAddress)
+        @Html.DisplayFor(model => model.AppUser.StreetAddress)
     </dd>
 
     <dt>
-        @Html.DisplayNameFor(model => model.User.City)
+        @Html.DisplayNameFor(model => model.AppUser.City)
     </dt>
 
     <dd>
-        @Html.DisplayFor(model => model.User.City)
+        @Html.DisplayFor(model => model.AppUser.City)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.User.Zipcode)
+        @Html.DisplayNameFor(model => model.AppUser.Zipcode)
     </dt>
 
     <dd>
-        @Html.DisplayFor(model => model.User.Zipcode)
+        @Html.DisplayFor(model => model.AppUser.Zipcode)
     </dd>
 
 </dl>
 </div>
 <div class="col-md-offset-2 col-md-10">
     <div class="btn btn-primary btn-large">
-        @Html.ActionLink("SUBMIT", "Index")
+        @Html.ActionLink("SUBMIT", "Index", "EmployeeUsers", Model.Employee.EmployeeId, null)
     </div>
-    @Html.ActionLink("Edit", "Edit", "CustomerUsers", null, new { @class = "btn btn-link" })
+    @Html.ActionLink("Edit", "Edit", "EmployeeUsers", Model.Employee.EmployeeId, new { @class = "btn btn-link" })
 </div>
 
 @section Scripts {

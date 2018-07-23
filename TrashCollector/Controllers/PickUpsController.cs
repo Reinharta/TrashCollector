@@ -20,6 +20,10 @@ namespace TrashCollector.Controllers
         {
             return View(db.PickUps.ToList());
         }
+        public ActionResult SortedIndex (List<PickUps> pickUps)
+        {
+            return View("Index", pickUps);
+        }
 
         // GET: PickUps/Details/5
         public ActionResult Details(int? id)

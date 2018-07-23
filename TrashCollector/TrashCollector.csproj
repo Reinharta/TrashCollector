@@ -312,6 +312,18 @@
     <Compile Include="Migrations\201807230203363_exception in startup.Designer.cs">
       <DependentUpon>201807230203363_exception in startup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807230306010_Add AppUser to Emp model.cs" />
+    <Compile Include="Migrations\201807230306010_Add AppUser to Emp model.Designer.cs">
+      <DependentUpon>201807230306010_Add AppUser to Emp model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807230318346_yeahman.cs" />
+    <Compile Include="Migrations\201807230318346_yeahman.Designer.cs">
+      <DependentUpon>201807230318346_yeahman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807230329087_fixed emp, added VM.cs" />
+    <Compile Include="Migrations\201807230329087_fixed emp, added VM.Designer.cs">
+      <DependentUpon>201807230329087_fixed emp, added VM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerUsers.cs" />
@@ -324,6 +336,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerUsersCreateViewModel.cs" />
     <Compile Include="ViewModels\CustomerUsersIndexViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeUsersCreateViewModel.cs" />
     <Compile Include="ViewModels\PickUpsIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -498,6 +511,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807230203363_exception in startup.resx">
       <DependentUpon>201807230203363_exception in startup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807230306010_Add AppUser to Emp model.resx">
+      <DependentUpon>201807230306010_Add AppUser to Emp model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807230318346_yeahman.resx">
+      <DependentUpon>201807230318346_yeahman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807230329087_fixed emp, added VM.resx">
+      <DependentUpon>201807230329087_fixed emp, added VM.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

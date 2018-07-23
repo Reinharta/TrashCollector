@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
+using TrashCollector.ViewModels;
 
 namespace TrashCollector.Controllers
 {
@@ -17,7 +19,12 @@ namespace TrashCollector.Controllers
         // GET: EmployeeUsers
         public ActionResult Index()
         {
-            return View(db.EmployeeUsers.ToList());
+            var currentUserId = User.Identity.GetUserId();
+            EmployeeUsers employee = db.EmployeeUsers.Where(c => c.UserId == currentUserId).First();
+            var employeeZip = db.Users.Where(c => c.Id == employee.UserId).First().Zipcode;
+            List<PickUps> PickUpsByZip = db.PickUps.Where(c => c.Zipcode == employeeZip).ToList();
+
+            return View(PickUpsByZip);
         }
 
         // GET: EmployeeUsers/Details/5
@@ -36,29 +43,41 @@ namespace TrashCollector.Controllers
         }
 
         // GET: EmployeeUsers/Create
-        public ActionResult Create()
-        {
-            EmployeeUsers employee = new EmployeeUsers();
-            return View(employee);
-        }
+        //public ActionResult Create()
+        //{
+        //    EmployeeUsers employee = new EmployeeUsers();
+        //    return View(employee);
+        //}
 
-        // POST: EmployeeUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeId,UserId,Address")] ApplicationUser newUser)
+        //// POST: EmployeeUsers/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        [ActionName("Create")]
+        public ActionResult Create([Bind(Include = "FirstName,LastName,PhoneNumber,UserId")] ApplicationUser newUser)
         {
             if (ModelState.IsValid)
             {
                 EmployeeUsers newEmployee = new EmployeeUsers()
                 {
-                   
-                    //FirstName = newUser.
+                   UserId = User.Identity.GetUserId(),
+                   FirstName = newUser.FirstName,
+                   LastName = newUser.LastName,
+                   PhoneNumber = newUser.PhoneNumber                 
                 };
+
                 db.EmployeeUsers.Add(newEmployee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                ApplicationUser currentUser = db.Users.FirstOrDefault(c => c.Id == newEmployee.UserId);
+
+                var ViewModel = new EmployeeUsersCreateViewModel
+                {
+                   Employee = newEmployee,
+                   AppUser = currentUser
+                };
+                return View("Create", ViewModel);
 
             }
 
