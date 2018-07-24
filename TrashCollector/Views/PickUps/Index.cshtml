@@ -10,6 +10,13 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+        <text> Pick-Up Day</text> @Html.DropDownList("Day", new SelectList(ViewBag.Day))
+        <text> Zipcode</text> @Html.DropDownList("Zipcode", new SelectList(ViewBag.Zipcode))
+        <input type="submit" value="Search" />
+    }
 </p>
 <table class="table">
     <tr>
@@ -60,6 +67,6 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.PickUpId })
             </td>
         </tr>
-    }
+        }
 
 </table>

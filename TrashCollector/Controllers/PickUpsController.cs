@@ -16,13 +16,27 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PickUps
-        public ActionResult Index()
+        public ActionResult Index(DayOfWeek day = 0, int zipcode = 0)
         {
             if (User.IsInRole("Customer"))
             {
                 string customerUserId = User.Identity.GetUserId();
                 CustomerUsers customer = db.CustomerUsers.Where(c => c.UserId == customerUserId).First();
                 return View(db.PickUps.Where(c => c.CustomerId == customer.CustomerId));
+            }
+            if (User.IsInRole("Employee"))
+            {
+                ViewBag.Day = (from r in db.PickUps
+                               select r.PickUpDay).Distinct();
+                ViewBag.Zipcode = (from r in db.PickUps
+                                   select r.Zipcode).Distinct();
+                var model = from r in db.PickUps
+                            orderby r.CustomerId
+                            where r.PickUpDay == day || day == 0
+                            where r.Zipcode == zipcode || zipcode == 0
+                            select r;
+                return View(model);
+
             }
 
             return View(db.PickUps.ToList());
