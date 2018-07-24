@@ -21,7 +21,7 @@ namespace TrashCollector.Models
         public int CustomerId { get; set; }
         public CustomerUsers Customers { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:mm/DD/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PickUpDate { get; set; }
 
         public double Fee { get; set; }

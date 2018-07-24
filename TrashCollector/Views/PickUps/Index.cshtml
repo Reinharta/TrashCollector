@@ -14,16 +14,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StreetAddress)
+            Street Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PickUpDay)
+           Pick-Up Day
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            Start Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EndDate)
+            End Date
         </th>
         <th>
             Recurring
@@ -37,16 +37,16 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StreetAddress)
+                @item.StreetAddress
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PickUpDay)
+                @item.PickUpDay
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                @item.StartDate.ToString("MM/dd/yy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
+                @item.EndDate.ToString("MM/dd/yy")
             </td>
             <td>
                 @item.Recurring

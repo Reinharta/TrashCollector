@@ -20,7 +20,8 @@ namespace TrashCollector.Controllers
         {
             if (User.IsInRole("Customer"))
             {
-                CustomerUsers customer = db.CustomerUsers.Where(c => c.UserId == User.Identity.GetUserId().ToString()).First();
+                string customerUserId = User.Identity.GetUserId();
+                CustomerUsers customer = db.CustomerUsers.Where(c => c.UserId == customerUserId).First();
                 return View(db.PickUps.Where(c => c.CustomerId == customer.CustomerId));
             }
 
