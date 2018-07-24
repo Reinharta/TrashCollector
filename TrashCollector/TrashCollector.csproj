@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201807240353187_Added PU date to billing.Designer.cs">
       <DependentUpon>201807240353187_Added PU date to billing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807242148032_fix dates.cs" />
+    <Compile Include="Migrations\201807242148032_fix dates.Designer.cs">
+      <DependentUpon>201807242148032_fix dates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Billing.cs" />
@@ -332,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807240353187_Added PU date to billing.resx">
       <DependentUpon>201807240353187_Added PU date to billing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807242148032_fix dates.resx">
+      <DependentUpon>201807242148032_fix dates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
