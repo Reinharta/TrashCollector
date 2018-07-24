@@ -18,6 +18,12 @@ namespace TrashCollector.Controllers
         // GET: PickUps
         public ActionResult Index()
         {
+            if (User.IsInRole("Customer"))
+            {
+                CustomerUsers customer = db.CustomerUsers.Where(c => c.UserId == User.Identity.GetUserId().ToString()).First();
+                return View(db.PickUps.Where(c => c.CustomerId == customer.CustomerId));
+            }
+
             return View(db.PickUps.ToList());
         }
         public ActionResult SortedIndex (List<PickUps> pickUps)
@@ -41,9 +47,36 @@ namespace TrashCollector.Controllers
         }
 
         // GET: PickUps/Create
-        public ActionResult Create(int? id)
+        public ActionResult Create(int? customerId, PickUps lastPickUp = null)
         {
-            return View(id);
+            if(lastPickUp != null)
+            {
+                if (lastPickUp.Recurring == true && lastPickUp.EndDate.Date > DateTime.Today.Date)
+                {
+                    return RedirectToAction("CreateRecurring", lastPickUp);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult CreateRecurring (PickUps lastPickUp)
+        {
+            DateTime getPickUpDate = GetNextWeekday(lastPickUp.StartDate, lastPickUp.PickUpDay);
+            PickUps nextPickUp = new PickUps()
+            {
+                CustomerId = lastPickUp.CustomerId,
+                StreetAddress = lastPickUp.StreetAddress,
+                Zipcode = lastPickUp.Zipcode,
+                PickUpDay = lastPickUp.PickUpDay,
+                PickUpDate = getPickUpDate,
+                StartDate = lastPickUp.StartDate,
+                EndDate = lastPickUp.EndDate,
+                Recurring = lastPickUp.Recurring,
+                Completed = false
+            };
+            db.PickUps.Add(nextPickUp);
+            db.SaveChanges();
+            return RedirectToAction("Index", "EmployeeUsers");
         }
 
         // POST: PickUps/Create
@@ -57,7 +90,7 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 CustomerUsers currentCustomer = db.CustomerUsers.Where(c => c.UserId == currentUserId).First();
-                DateTime getPickUpDate = GetNextWeekday(DateTime.Today, pickUps.PickUpDay);
+                DateTime getPickUpDate = GetNextWeekday(pickUps.StartDate, pickUps.PickUpDay);
 
                 pickUps.CustomerId = currentCustomer.CustomerId;
                 pickUps.StreetAddress = currentCustomer.User.StreetAddress;
@@ -68,7 +101,7 @@ namespace TrashCollector.Controllers
 
                 db.PickUps.Add(pickUps);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PickUps", db.PickUps.ToList());
+                return RedirectToAction("Index", "PickUps", db.PickUps.Where(c=> c.CustomerId == currentCustomer.CustomerId).ToList());
             }
 
             return View("Index", "CustomerUsers", currentUserId);
@@ -101,16 +134,22 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PickUpId,PickUpDay,StartDate,EndDate,Recurring")] PickUps pickUps)
+        public ActionResult Edit([Bind(Include = "StreetAddress,Zipcode,CustomerId,PickUpId,PickUpDay,StartDate,EndDate,Recurring,Completed")] PickUps pickUps)
         {
             string currentUserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                CustomerUsers currentCustomer = db.CustomerUsers.Where(c => c.UserId == currentUserId).First();
-                DateTime getPickUpDate = GetNextWeekday(DateTime.Today, pickUps.PickUpDay);
+                //CustomerUsers currentCustomer = db.CustomerUsers.Where(c => c.CustomerId == pickUps.CustomerId).First();
+                DateTime getPickUpDate = GetNextWeekday(pickUps.StartDate, pickUps.PickUpDay);
+
+                PickUps originalPickUp = db.PickUps.Where(c => c.PickUpId == pickUps.PickUpId).First();
 
                 pickUps.PickUpDate = getPickUpDate;
+                pickUps.CustomerId = originalPickUp.CustomerId;
+                pickUps.Zipcode = originalPickUp.Zipcode;
+                pickUps.StreetAddress = originalPickUp.StreetAddress;
 
+                db.Entry(originalPickUp).State = EntityState.Detached;
                 db.Entry(pickUps).State = EntityState.Modified;
                 db.SaveChanges();
 

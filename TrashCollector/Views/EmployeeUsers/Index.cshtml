@@ -28,7 +28,7 @@
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Recurring)
+            @Html.DisplayNameFor(model => model.Completed)
         </th>
         <th></th>
     </tr>
@@ -49,12 +49,12 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Recurring)
+            @Html.DisplayFor(modelItem => item.Completed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.PickUpId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.PickUpId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.PickUpId })
+            @Html.ActionLink("Edit", "Edit", "PickUps", new { id = item.PickUpId }, null) |
+            @Html.ActionLink("Details", "Details", "PickUps", new { id = item.PickUpId }, null) |
+            @Html.ActionLink("Delete", "Delete", "PickUps", new { id = item.PickUpId }, null)
         </td>
     </tr>
     }

@@ -13,6 +13,8 @@ namespace TrashCollector.ViewModels
 
         public IEnumerable<Billing> CustomerBills { get; set; }
 
+        public List<PickUps> CustomerPickUps { get; set; }
+
         public IEnumerator<Billing> GetEnumerator()
         {
             foreach (Billing bill in CustomerBills)

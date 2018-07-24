@@ -1,52 +1,47 @@
-﻿@model IEnumerable<TrashCollector.Models.Billing>
+﻿@model TrashCollector.ViewModels.BillingIndexViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2> Billing - @Model.Customer.FirstName @Model.Customer.LastName </h2 >
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Customers.UserId)
+            Pick-Up Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PickUps.StreetAddress)
+            Fee
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Paid)
+            Paid
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customers.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickUps.StreetAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Paid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TransactionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TransactionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TransactionId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.PickUpDate.ToString("MM/dd/yy")
+            </td>
+            <td>
+                @item.Fee
+            </td>
+            <td>
+                @item.Paid
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.TransactionId })
+
+            </td>
+        </tr>
+    }
 
 </table>

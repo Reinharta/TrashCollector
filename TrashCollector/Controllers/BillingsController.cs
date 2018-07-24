@@ -25,7 +25,8 @@ namespace TrashCollector.Controllers
             var ViewModel = new BillingIndexViewModel()
             {
                 Customer = customer,
-                CustomerBills = db.Billing.Where(c => c.CustomerId == customer.CustomerId && c.Paid == false).AsEnumerable()
+                CustomerBills = db.Billing.Where(c => c.CustomerId == customer.CustomerId && c.Paid == false).AsEnumerable(),
+                CustomerPickUps = db.PickUps.Where(c => c.CustomerId == customer.CustomerId && c.Completed == true).ToList()
             };
 
             //var billing = db.Billing.Include(b => b.Customers).Include(b => b.PickUps);
@@ -53,6 +54,9 @@ namespace TrashCollector.Controllers
             ViewBag.CustomerId = pickUp.CustomerId;   //new SelectList(db.CustomerUsers, "CustomerId", "UserId");
             ViewBag.PickUpId = pickUp.PickUpId;   //new SelectList(db.PickUps, "PickUpId", "StreetAddress");
             ViewBag.Fee = 35.00;
+            ViewBag.PickUpDate = pickUp.PickUpDate;
+            ViewBag.CustFirstName = db.CustomerUsers.Where(c => c.CustomerId == pickUp.CustomerId).First().FirstName;
+            ViewBag.CustLastName = db.CustomerUsers.Where(c => c.CustomerId == pickUp.CustomerId).First().LastName;
             return View();
         }
 
@@ -61,13 +65,19 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransactionId,PickUpId,CustomerId,Fee,Paid")] Billing billing)
+        public ActionResult Create([Bind(Include = "TransactionId,PickUpId,PickUpDate,CustomerId,Fee,Paid")] Billing billing)
         {
             if (ModelState.IsValid)
             {
+                billing.Fee = 35;
                 db.Billing.Add(billing);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                PickUps completedPickUp = db.PickUps.Where(c => c.PickUpId == billing.PickUpId).First();
+                if (completedPickUp.Recurring == true)
+                {
+                    return RedirectToAction("Create", "PickUps", completedPickUp);
+                }
+                return RedirectToAction("Index", "EmployeeUsers");
             }
 
             ViewBag.CustomerId = new SelectList(db.CustomerUsers, "CustomerId", "UserId", billing.CustomerId);

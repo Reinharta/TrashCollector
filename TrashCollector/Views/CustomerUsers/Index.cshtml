@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customer Home</h2>
+<h2>Upcoming Pick-Ups</h2>
 
 <p>
     @Html.ActionLink("Add A Pick-Up", "Create", "PickUps", Model.Customer.CustomerId, null)
@@ -14,6 +14,9 @@
     <tr>
         <th>
             Pick-Up Day
+        </th>
+        <th>
+            Pick-Up Date
         </th>
         <th>
             Start Date
@@ -33,18 +36,21 @@
             @pickup.PickUpDay
         </td>
         <td>
-            @pickup.StartDate
+            @pickup.PickUpDate.ToString("MM/dd/yy")
         </td>
         <td>
-            @pickup.EndDate
+            @pickup.StartDate.ToString("MM/dd/yy")
+        </td>
+        <td>
+            @pickup.EndDate.ToString("MM/dd/yy")
         </td>
         <td>
             @pickup.Recurring
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", "PickUps", new { id = pickup.PickUpId }, null) |
-            @Html.ActionLink("Details", "Details", new { id = pickup.PickUpId }, null) |
-            @Html.ActionLink("Delete", "Delete", new { id = pickup.PickUpId }, null)
+            @Html.ActionLink("Details", "Details", "PickUps", new { id = pickup.PickUpId }, null) |
+            @Html.ActionLink("Delete", "Delete", "PickUps", new { id = pickup.PickUpId }, null)
         </td>
     </tr>
     }

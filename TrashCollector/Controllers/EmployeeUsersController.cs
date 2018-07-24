@@ -22,9 +22,9 @@ namespace TrashCollector.Controllers
             var currentUserId = User.Identity.GetUserId();
             EmployeeUsers employee = db.EmployeeUsers.Where(c => c.UserId == currentUserId).First();
             var employeeZip = db.Users.Where(c => c.Id == employee.UserId).First().Zipcode;
-            List<PickUps> PickUpsByZip = db.PickUps.Where(c => c.Zipcode == employeeZip).ToList();
+            List<PickUps> PickUpsByZipToday = db.PickUps.Where(c => c.Zipcode == employeeZip && DbFunctions.TruncateTime(c.PickUpDate) == DateTime.Today.Date).ToList();
 
-            return View(PickUpsByZip);
+            return View(PickUpsByZipToday);
         }
 
         // GET: EmployeeUsers/Details/5

@@ -21,21 +21,26 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
                     @if (User.IsInRole("Employee"))
                     {
                         <li>@Html.ActionLink("All Pickups", "Index", "PickUps")</li>
+                        <li>@Html.ActionLink("Today's Pickups", "Index", "EmployeeUsers")</li>
                     }
 
                     @if (User.IsInRole("Customer"))
                     {
-                        <li>@Html.ActionLink("Add A Pickup","Create", "PickUps")</li>
-                        <li>@Html.ActionLink("View Pickups", "Details", "PickUps")</li>
+                        <li>@Html.ActionLink("Add A Pickup", "Create", "PickUps")</li>
+                        <li>@Html.ActionLink("View Pickups", "Index", "CustomerUsers")</li>
                         <li>@Html.ActionLink("View Bill", "Index", "Billings")</li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (!User.IsInRole("Customer") && !User.IsInRole("Employee"))
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

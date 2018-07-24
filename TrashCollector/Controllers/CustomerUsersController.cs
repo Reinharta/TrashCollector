@@ -20,7 +20,7 @@ namespace TrashCollector.Controllers
             var ViewModel = new CustomerUsersIndexViewModel
             {
                 Customer = customer,
-                CustomerPickUps = db.PickUps.ToList().Where(c => c.CustomerId == customer.CustomerId).AsEnumerable()
+                CustomerPickUps = db.PickUps.ToList().Where(c => c.CustomerId == customer.CustomerId && c.Completed == false).AsEnumerable()
             };
             return View(ViewModel);
         }

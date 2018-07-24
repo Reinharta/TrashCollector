@@ -15,25 +15,13 @@ namespace TrashCollector.Migrations
 
         protected override void Seed(TrashCollector.Models.ApplicationDbContext context)
         {
-            //States Wisconsin = new States()
-            //{
-            //    StateName = "Wisconsin",
-            //    StateAbbreviation = "WI"
-            //};
+            context.CustomerUsers.AddOrUpdate(c => c.UserId,
+                new CustomerUsers() { CustomerId = 4, FirstName = "Graham", LastName = "Schenk", PhoneNumber = "4493829" },
+                new CustomerUsers() { CustomerId = 5, FirstName = "Shelly", LastName = "Erickson", PhoneNumber = "3882034" },
+                new CustomerUsers() { CustomerId = 6, FirstName = "Charles", LastName = "Chance", PhoneNumber = "4883920" }
+            );
 
-            //context.States.Add(Wisconsin);
 
-            //Cities Milwaukee = new Cities() { CityName = "Milwaukee" };
-            ////Cities Brookfield = new Cities() { CityName = "Brookfield" };
-            ////Cities NewBerlin = new Cities() { CityName = "New Berlin" };
-            ////Cities Wauwatosa = new Cities() { CityName = "Wauwatosa" };
-
-            //context.Cities.Add(Milwaukee);
-            //context.Cities.Add(Brookfield);
-            //context.Cities.Add(NewBerlin);
-            //context.Cities.Add(Wauwatosa);
-            
-            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
